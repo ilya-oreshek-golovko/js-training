@@ -1,3 +1,4 @@
+/*
 const books = [];
 const target = 1000000;
 
@@ -31,3 +32,51 @@ for(let i = 0; i < books.length; i++){
 	}
 }
 console.timeEnd("Time For 2");
+*/
+
+class Node{
+	constructor(data){
+		this.data = data;
+		this.left = null;
+		this.right = null;
+	}
+} 
+class BinarySearchTree{
+	constructor(){
+		this.root = null;
+	}
+
+	insert(data){
+		const newNode = new Node(data);
+		if(this.root === null){
+			this.root = newNode;
+		} else{
+			this.insertNode(this.root, newNode);
+		}
+	}
+
+	insertNode(currNode, newNode){
+		if(currNode.data > newNode.data){
+			if(currNode.left === null){
+				currNode.left = newNode;
+			} else{
+				this.insertNode(currNode.left, newNode);
+			}
+		} else{
+			if(currNode.right === null){
+				currNode.right = newNode;
+			} else{
+				this.insertNode(currNode.right, newNode);
+			}
+		}
+	}
+} 
+
+
+const BST = new BinarySearchTree();
+BST.insert(11); // establishes root node 
+BST.insert(7);
+BST.insert(9);
+BST.insert(15);
+BST.insert(6);
+console.log(BST);
